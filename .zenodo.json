@@ -1,0 +1,19 @@
+{
+  "title": "riesgo_tal_tal: event-based test of the hazard term in composite risk indices (Taltal, Atacama Desert, March 2015 aluvión)",
+  "upload_type": "software",
+  "description": "R targets pipeline and SurtGIS calls used in the article 'Reach, not initiation: an event-based test of the hazard term in composite risk indices for a fan-built city in the Atacama Desert' (submitted to Natural Hazards). The pipeline computes the reach index (HAND), the consequence components (2024 Census vulnerability, exposure and isochrone-based lack of coping capacity), the conventional and reach-based risk indices, the propagation and null baselines, and all validations against the areas affected by the March 2015 event in six communes of the Atacama Desert, Chile. Input data are public or available from their providers (see README); the digitized Taltal footprint derived from the Sernageomin map is available from the corresponding author on request.",
+  "creators": [
+    {"name": "Parra, Francisco", "affiliation": "Universidad de Santiago de Chile"},
+    {"name": "Gil-Costa, Verónica", "affiliation": "CONICET, Universidad Nacional de San Luis"},
+    {"name": "Bonacic, Carolina", "affiliation": "Universidad de Santiago de Chile"},
+    {"name": "Marín, Mauricio", "affiliation": "Universidad de Santiago de Chile"}
+  ],
+  "license": "MIT",
+  "keywords": ["aluvión", "debris flow", "composite risk index", "HAND", "event-based validation", "Atacama Desert", "R targets", "SurtGIS"],
+  "language": "eng",
+  "related_identifiers": [
+    {"identifier": "10.5281/zenodo.23042861", "relation": "requires", "scheme": "doi"}
+  ],
+  "grants": [],
+  "notes": "Funded by the Postdoctoral Project DICYT 061219MC_POSTDOC, Universidad de Santiago de Chile."
+}

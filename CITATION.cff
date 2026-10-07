@@ -1,0 +1,47 @@
+cff-version: 1.2.0
+message: "If you use this software or data, please cite the article and this archive."
+title: "riesgo_tal_tal: event-based test of the hazard term in composite risk indices (Taltal, Atacama Desert, March 2015 aluvión)"
+type: software
+authors:
+  - family-names: Parra
+    given-names: Francisco
+    affiliation: "Departamento de Ingeniería Informática, Universidad de Santiago de Chile"
+    email: francisco.parra.o@usach.cl
+  - family-names: Gil-Costa
+    given-names: Verónica
+    affiliation: "CONICET, Universidad Nacional de San Luis"
+  - family-names: Bonacic
+    given-names: Carolina
+    affiliation: "Departamento de Ingeniería Informática, Universidad de Santiago de Chile"
+  - family-names: Marín
+    given-names: Mauricio
+    affiliation: "Departamento de Ingeniería Informática, Universidad de Santiago de Chile"
+license: MIT
+version: "1.0.0"
+date-released: "2026-10-07"
+doi: "10.5281/zenodo.XXXXXXX"   # reemplazar por el DOI reservado en Zenodo
+repository-code: "https://github.com/franciscoparrao/riesgo-tal-tal"   # confirmar URL
+keywords:
+  - aluvión
+  - debris flow
+  - composite risk index
+  - HAND
+  - event-based validation
+  - Atacama Desert
+  - R targets
+  - SurtGIS
+preferred-citation:
+  type: article
+  title: "Reach, not initiation: an event-based test of the hazard term in composite risk indices for a fan-built city in the Atacama Desert"
+  authors:
+    - family-names: Parra
+      given-names: Francisco
+    - family-names: Gil-Costa
+      given-names: Verónica
+    - family-names: Bonacic
+      given-names: Carolina
+    - family-names: Marín
+      given-names: Mauricio
+  journal: "Natural Hazards"
+  year: 2026
+  status: submitted

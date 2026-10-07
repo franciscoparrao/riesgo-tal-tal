@@ -1,0 +1,6 @@
+# Copy to .Renviron and adapt the paths
+SURTGIS_BIN=/path/to/surtgis-1.5.1/surtgis
+FLOWPY_PYTHON=/path/to/avaframe-env/bin/python
+# Optional memory limits for heavy steps
+# SURTGIS_MAX_MEM=6G
+# LOCC_MEM_MAX=4G

@@ -1,0 +1,78 @@
+# Configuración del pipeline de riesgo. Modo: RIESGO_MODO=corregido (salidas/corregido/).
+# `default` define lo común; el modo sobrescribe solo lo que cambia.
+
+default:
+  crs: 32719
+  semilla: 42
+  pesos:
+    susceptibilidad: 0.25
+    vulnerabilidad: 0.25
+    exposicion: 0.25
+    locc: 0.25
+  jenks_clases: 5
+  jenks_muestra: 20000
+  entradas:
+    comuna: datos/entrada/limites/comuna_taltal.gpkg
+
+
+corregido:
+  resolucion_salida: 10
+  resolucion_locc: 10
+  # LOCC: isócronas en auto con r5r sobre OSM (Geofabrik chile-260928).
+  osm_pbf: datos/entrada/osm/chile-260928.osm.pbf
+  osm_margen_km: 30
+  locc_indicadores:
+    salud:       {capa: datos/entrada/infraestructura_critica/hospitales_taltal.shp, umbral: 50}
+    comisarias:  {capa: datos/entrada/infraestructura_critica/cuarteles_taltal.shp, umbral: 50}
+    educacion:   {capa: datos/entrada/infraestructura_critica/colegios_taltal.shp, umbral: 50}
+    transmision: {capa: datos/entrada/infraestructura_critica/linea_transmision_taltal.shp, umbral: 30}
+    recreacion:  {capa: osm, umbral: 30}   # sin capa oficial -> leisure=* de OSM
+  # Exposición
+  # Censo 2024 (INE, cartografía con agregados por manzana/entidad). Para volver al 2017:
+  # censo: {version: 2017, ruta: datos/entrada/censo/taltal_geo.shp}
+  censo:
+    version: 2024
+    ruta: datos/entrada/censo2024/Cartografia_censo2024_Pais/Cartografia_censo2024_Pais.gpkg
+    cut: 2104
+    capas: [Manzanas_CPV24, Entidades_CPV24]
+  google_buildings: datos/entrada/exposicion/Google_buildings/96b_buildings.csv.gz
+  exposicion:
+    confianza_edificios: 0.7
+    # "lineal" = min-max como la tesis; "log" = min-max de log1p (densidad por manzana es muy asimétrica)
+    transformacion_densidad: log
+    # OSM landuse -> puntaje (la tesis: industrial 3, comercial 2, residencial 1, resto 0)
+    puntajes_uso: {industrial: 3, commercial: 2, retail: 2, residential: 1}
+  # Susceptibilidad: ensamble (promedio) del modelo final del paper CFS-TOPSIS
+  # (revisión R1, NHAZ-S-26-01048). AUC 5x30: XGB 0.930, RF 0.933, LGBM 0.938; r = 0.89-0.94.
+  susceptibilidad_modelos:
+    - datos/entrada/susceptibilidad_paper/susceptibilidad_xgboost.tif
+    - datos/entrada/susceptibilidad_paper/susceptibilidad_rf.tif
+    - datos/entrada/susceptibilidad_paper/susceptibilidad_lightgbm.tif
+  # Validación: aluvión 25-26/03/2015, Sernageomin "Zonas fotointerpretadas (controladas en
+  # terreno)", 1:20.000, v. 23-04-2015. Solo capturas de pantalla (norte y sur del mapa).
+  evento_2015:
+    norte: datos/entrada/evento_2015/mapa_aluvion_2015_taltal_norte.png
+    sur: datos/entrada/evento_2015/mapa_aluvion_2015_taltal_sur.png
+    catastro: datos/entrada/evento_2015/catastro_atacama_2015.geojson   # Atacama (validación externa)
+  # Sensibilidad: DEM alternativo (FABDEM v1.2, sin edificios ni vegetación) para HAND en Taltal
+  dem_fabdem: datos/entrada/dem/fabdem_taltal_4326.tif
+  # Vulnerabilidad
+  sentinel2_dir: datos/entrada/sentinel2_2024     # composite 2024 (SurtGIS stac, 20 m)
+  geologia: datos/entrada/geologia/geologia_area_estudio.gpkg   # Sernageomin 1:1M (diagnóstico)
+  vulnerabilidad:
+    variantes: [base, extendida]   # base = 5 equivalentes 2017 (sin densidad); extendida = + 4 físicas 2024
+    metodos: [indice, fuzzy]        # entran al riesgo (se comparan)
+    principal: extendida_indice     # resultado principal (robusto: rho=0.83 base vs extendida)
+    tipologias: [kmeans, hdbscan]   # solo perfiles descriptivos
+    fuzzy_m: auto                   # auto = Schwämmle & Jensen (2010); m=2 degenera con D=8-12
+    # Unidad de análisis: unidades censales pobladas (manzanas + entidades), no píxeles.
+    n_muestra: 100000              # solo para el diagnóstico espectral (muestra de píxeles)
+    n_pc: 3                        # componentes principales del bloque espectral
+    espectral_paso_m2: 400         # 1 píxel de 20 m por cada 400 m² de unidad
+    espectral_max_px: 2000         # tope por unidad (entidades rurales enormes)
+    k: auto                        # auto = máximo coeficiente de silueta; o un entero
+    k_rango: [2, 10]
+    hdbscan_minpts: [3, 4, 5, 6, 8, 10, 12, 15, 20, 25, 30]
+    # Revisión experta: sobrescribe niveles de la regla automática, p. ej.
+    # niveles_override: {extendida_kmeans: {"3": 0.90, "5": 0.60}}
+    niveles_override: {}

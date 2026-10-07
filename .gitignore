@@ -1,0 +1,32 @@
+# Datos de entrada de terceros (censo, OSM, Sentinel-2, capturas Sernageomin, DEM): ver datos/README.md
+datos/
+# Salidas del pipeline y caché de targets (se regeneran con run.R)
+_targets/
+salidas/
+# Bibliotecas y JDK locales
+rlib/
+rjavaenv/
+# Material de origen no publicado / histórico
+legacy/
+tesis/
+referencia_tesis/
+referencias.bib
+qgis/
+figuras/
+notas/
+README_es.md
+# Manuscrito en revisión (se publica en la revista)
+paper/manuscrito/
+paper/figs/
+paper/resumen_para_match.md
+# Configuración local de la máquina
+.Renviron
+.Rprofile
+# Python / R / sistema
+__pycache__/
+*.pyc
+.Rhistory
+.RData
+.Rproj.user/
+*.Rproj
+.DS_Store
