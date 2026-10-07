@@ -5,6 +5,7 @@ type: software
 authors:
   - family-names: Parra
     given-names: Francisco
+    orcid: "https://orcid.org/0009-0006-0435-1854"
     affiliation: "Departamento de Ingeniería Informática, Universidad de Santiago de Chile"
     email: francisco.parra.o@usach.cl
   - family-names: Gil-Costa
@@ -19,7 +20,7 @@ authors:
 license: MIT
 version: "1.0.0"
 date-released: "2026-10-07"
-doi: "10.5281/zenodo.XXXXXXX"   # reemplazar por el DOI reservado en Zenodo
+doi: "10.5281/zenodo.23221276"
 repository-code: "https://github.com/franciscoparrao/riesgo-tal-tal"
 keywords:
   - aluvión

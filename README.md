@@ -47,12 +47,13 @@ Inputs are not redistributed here; place them under `datos/entrada/` with the pa
 | Building footprints | Google Open Buildings |
 | Sentinel-2 Level-2A composite, 2024 (vulnerability typology only) | Copernicus, via SurtGIS STAC |
 | DEM (Copernicus GLO-30) and FABDEM v1.2 | Copernicus; University of Bristol |
-| Initiation susceptibility maps (XGBoost, RF, LightGBM ensemble) | Companion study; Zenodo DOI in the manuscript |
+| Initiation susceptibility maps (XGBoost, RF, LightGBM ensemble) | Companion study; [10.5281/zenodo.23221282](https://doi.org/10.5281/zenodo.23221282) |
 | Areas affected in March 2015 (six communes) | Sernageomin; the digitised Taltal footprint is available from the corresponding author on request |
 | Official risk zoning of the Communal Regulatory Plan of Taltal (2012) | MINVU Geoportal Open Data |
 
 The derived data used in the analysis (indices per census unit, block-level predictors for the six
-communes, reach index raster and all result tables) are archived at Zenodo (DOI in the manuscript).
+communes, reach index raster and all result tables) are archived at Zenodo: [10.5281/zenodo.23221274](https://doi.org/10.5281/zenodo.23221274).
+This code is archived at [10.5281/zenodo.23221276](https://doi.org/10.5281/zenodo.23221276).
 
 ## Running
 
