@@ -18,8 +18,8 @@ authors:
     given-names: Mauricio
     affiliation: "Departamento de Ingeniería Informática, Universidad de Santiago de Chile"
 license: MIT
-version: "1.0.0"
-date-released: "2026-10-07"
+version: "1.0.1"
+date-released: "2026-10-09"
 doi: "10.5281/zenodo.23221276"
 repository-code: "https://github.com/franciscoparrao/riesgo-tal-tal"
 keywords:
