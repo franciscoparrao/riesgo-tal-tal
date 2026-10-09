@@ -16,7 +16,7 @@ flow) of 25–26 March 2015.
 |---|---|
 | `_targets.R`, `run.R`, `config.yml` | [`targets`](https://docs.ropensci.org/targets/) pipeline and its configuration |
 | `R/` | Pipeline functions (one file per component: exposure, vulnerability, coping capacity, reach hazard, risk, validation, robustness, selection, official zoning benchmark, data deposit) |
-| `bin/` | Helper scripts: r5r isochrones (`isocrona.R`), receiving-channel area for the GFI (`area_cauce_destino.py`), Flow-Py runs (`flowpy.py`), exploratory simplified flow-path model (`sflm.py`, `run_sflm.sh`) |
+| `bin/` | Helper scripts: r5r isochrones (`isocrona.R`), receiving-channel area for the GFI (`area_cauce_destino.py`), Flow-Py runs (`flowpy.py`), exploratory simplified flow-path model (`sflm.py`, `run_sflm.sh`); independent HAND check with WhiteboxTools and fixed-exponent flood index (`hand_whitebox.py`, `control_hand_gfi.R`) |
 | `paper/R/` | Figures of the manuscript (`todas_las_figuras.R` runs all of them) |
 
 Comments and identifiers are in Spanish.
@@ -30,6 +30,7 @@ Comments and identifiers are in Spanish.
   flow accumulation, HAND); DOI 10.5281/zenodo.23042861.
 - Python 3 with AvaFrame 2.1 (Flow-Py), `rasterio` and `numba`.
 - `osmium` and GDAL command-line tools.
+- Optional, for the software check of HAND: Python with `whitebox` (WhiteboxTools 2.4).
 
 Copy `.Renviron.example` to `.Renviron` and set the paths to the SurtGIS binary and to the Python
 environment with AvaFrame.

@@ -30,3 +30,6 @@ __pycache__/
 .Rproj.user/
 *.Rproj
 .DS_Store
+
+# Paquetes de envío a revistas (contienen el manuscrito en revisión)
+paper/envio_*/
